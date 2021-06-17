@@ -1,150 +1,263 @@
 <!DOCTYPE html>
 <html lang="pt_BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= title %>
+  </title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
-    <header>
-        <div class="content">
-            <nav>
-                <p class="brand"><strong><%= title %></strong></p>
-                <ul>
-                    <li><a href="#">Catálogo</a></li>
-                    <li><a href="#">Sobre nós</a></li>
-                    <li><a href="#">Detalhes</a></li>
-                    <button>Login</button>
-                </ul>
-            </nav>
-            <div class="header-block">
-                <div class="text">
-                    <h2>O carro perfeito para você!</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, nisi?</p>
-                </div>
-                <img src="/img/car-header.png" alt="Car">
-            </div>
+  <header>
+    <div class="content">
+      <nav>
+        <p class="brand"><strong>
+            <%= title %>
+          </strong></p>
+        <ul>
+          <li><a href="#">Catálogo</a></li>
+          <li><a href="#">Sobre nós</a></li>
+          <li><a href="#">Detalhes</a></li>
+          <button>Login</button>
+        </ul>
+      </nav>
+      <div class="header-block">
+        <div class="text">
+          <h2>O carro perfeito para você!</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, nisi?</p>
         </div>
-    </header>
-        <section class="catalog" id="catalog">
-      <div class="content">
-        <div class="title-wrapper-catalog">
-          <p>Find what you want</p>
-          <h3>Catalog</h3>
+        <img src="/img/car-header.png" alt="Car">
+      </div>
+    </div>
+  </header>
+  <section class="catalog" id="catalog">
+    <div class="content">
+      <div class="title-wrapper-catalog">
+        <p>Encontre o que você quer</p>
+        <h3>Catálogo</h3>
+      </div>
+      <div class="filter-card">
+        <input type="text" class="search-input" placeholder="Procure o seu modelo favorito" />
+        <button class="search-button">Search</button>
+      </div>
+      <div class="card-wrapper">
+        <div class="card-item">
+          <img src="/img/car-card.png" alt="Car" />
+          <div class="card-content">
+            <h3>Audi Supra TT</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Repellendus.
+            </p>
+            <button type="button">I want this!</button>
+          </div>
         </div>
-        <div class="filter-card">
-          <input
-            type="text"
-            class="search-input"
-            placeholder="Procure o seu modelo favorito"
-          />
-          <button class="search-button">Search</button>
+        <div class="card-item">
+          <img src="/img/car-card.png" alt="Car" />
+          <div class="card-content">
+            <h3>Audi Supra TT</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Repellendus.
+            </p>
+            <button type="button">I want this!</button>
+          </div>
         </div>
-        <div class="card-wrapper">
-          <div class="card-item">
-            <img src="images/car-card.png" alt="Car" />
-            <div class="card-content">
-              <h3>Audi Supra TT</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repellendus.
-              </p>
-              <button type="button">I want this!</button>
-            </div>
+        <div class="card-item">
+          <img src="/img/car-card.png" alt="Car" />
+          <div class="card-content">
+            <h3>Audi Supra TT</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Repellendus.
+            </p>
+            <button type="button">I want this!</button>
           </div>
-          <div class="card-item">
-            <img src="images/car-card.png" alt="Car" />
-            <div class="card-content">
-              <h3>Audi Supra TT</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repellendus.
-              </p>
-              <button type="button">I want this!</button>
-            </div>
+        </div>
+        <div class="card-item">
+          <img src="/img/car-card.png" alt="Car" />
+          <div class="card-content">
+            <h3>Audi Supra TT</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Repellendus.
+            </p>
+            <button type="button">I want this!</button>
           </div>
-          <div class="card-item">
-            <img src="images/car-card.png" alt="Car" />
-            <div class="card-content">
-              <h3>Audi Supra TT</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repellendus.
-              </p>
-              <button type="button">I want this!</button>
-            </div>
+        </div>
+        <div class="card-item">
+          <img src="/img/car-card.png" alt="Car" />
+          <div class="card-content">
+            <h3>Audi Supra TT</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Repellendus.
+            </p>
+            <button type="button">I want this!</button>
           </div>
-          <div class="card-item">
-            <img src="images/car-card.png" alt="Car" />
-            <div class="card-content">
-              <h3>Audi Supra TT</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repellendus.
-              </p>
-              <button type="button">I want this!</button>
-            </div>
+        </div>
+        <div class="card-item">
+          <img src="/img/car-card.png" alt="Car" />
+          <div class="card-content">
+            <h3>Audi Supra TT</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Repellendus.
+            </p>
+            <button type="button">I want this!</button>
           </div>
-          <div class="card-item">
-            <img src="images/car-card.png" alt="Car" />
-            <div class="card-content">
-              <h3>Audi Supra TT</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repellendus.
-              </p>
-              <button type="button">I want this!</button>
-            </div>
+        </div>
+        <div class="card-item">
+          <img src="/img/car-card.png" alt="Car" />
+          <div class="card-content">
+            <h3>Audi Supra TT</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Repellendus.
+            </p>
+            <button type="button">I want this!</button>
           </div>
-          <div class="card-item">
-            <img src="images/car-card.png" alt="Car" />
-            <div class="card-content">
-              <h3>Audi Supra TT</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repellendus.
-              </p>
-              <button type="button">I want this!</button>
-            </div>
+        </div>
+        <div class="card-item">
+          <img src="/img/car-card.png" alt="Car" />
+          <div class="card-content">
+            <h3>Audi Supra TT</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Repellendus.
+            </p>
+            <button type="button">I want this!</button>
           </div>
-          <div class="card-item">
-            <img src="images/car-card.png" alt="Car" />
-            <div class="card-content">
-              <h3>Audi Supra TT</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repellendus.
-              </p>
-              <button type="button">I want this!</button>
-            </div>
-          </div>
-          <div class="card-item">
-            <img src="images/car-card.png" alt="Car" />
-            <div class="card-content">
-              <h3>Audi Supra TT</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repellendus.
-              </p>
-              <button type="button">I want this!</button>
-            </div>
-          </div>
-          <div class="card-item">
-            <img src="images/car-card.png" alt="Car" />
-            <div class="card-content">
-              <h3>Audi Supra TT</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repellendus.
-              </p>
-              <button type="button">I want this!</button>
-            </div>
+        </div>
+        <div class="card-item">
+          <img src="/img/car-card.png" alt="Car" />
+          <div class="card-content">
+            <h3>Audi Supra TT</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Repellendus.
+            </p>
+            <button type="button">I want this!</button>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
+  <section class="about" id="about">
+    <div class="content">
+      <div class="title-wrapper-about">
+        <p>Sobre nós</p>
+        <h3>A cerca de</h3>
+      </div>
+      <div class="about-content">
+        <div class="left">
+          <img src="/img/about.png" alt="About">
+        </div>
+        <div class="right">
+          <h3>Junte-se a tecnologia e mobilidade</h3>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos debitis odit soluta itaque perferendis,
+            facilis ut. Doloremque eos enim laborum deleniti, eligendi laboriosam quo pariatur alias nisi magnam, ut
+            blanditiis, temporibus maxime corrupti modi architecto! Architecto beatae asperiores tenetur cum dolorum
+            quisquam consequatur saepe minus velit aperiam dignissimos ea pariatur harum quidem voluptate totam
+            consequuntur ipsa sequi, quia incidunt omnis qui. Excepturi atque modi repellat veniam asperiores nobis nam
+            consequatur quam et temporibus tempore rem sint accusamus quisquam velit nesciunt, doloremque cum nisi
+            tenetur, a ut magni nulla omnis. Excepturi mollitia fugit nam eum ullam consectetur non nulla ad voluptates?
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="features" id="features">
+    <div class="content">
+      <div class="title-wrapper-features">
+        <p>O que você pode fazer</p>
+        <h3>Recursos</h3>
+      </div>
+      <div class="feature-card-block">
+        <div class="feature-card-item">
+          <img src="/img/feature-planet.png" alt="Feature" />
+          <div class="feature-text-content">
+            <h3>Título</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+        </div>
+        <div class="feature-card-item">
+          <img src="/img/feature-planet.png" alt="Feature" />
+          <div class="feature-text-content">
+            <h3>Título</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+        </div>
+        <div class="feature-card-item">
+          <img src="/img/feature-planet.png" alt="Feature" />
+          <div class="feature-text-content">
+            <h3>Título</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+        </div>
+        <div class="feature-card-item">
+          <img src="/img/feature-planet.png" alt="Feature" />
+          <div class="feature-text-content">
+            <h3>Título</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+        </div>
+        <div class="feature-card-item">
+          <img src="/img/feature-planet.png" alt="Feature" />
+          <div class="feature-text-content">
+            <h3>Título</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+        </div>
+        <div class="feature-card-item">
+          <img src="/img/feature-planet.png" alt="Feature" />
+          <div class="feature-text-content">
+            <h3>Título</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <footer>
+    <div class="main">
+      <div class="content footer-links">
+        <div class="footer-company">
+          <h4>Company</h4>
+          <h6>About</h6>
+          <h6>Contact</h6>
+        </div>
+        <div class="footer-rental">
+          <h4>Rental</h4>
+          <h6>Self-Drive</h6>
+          <h6>Chauffer-Driven</h6>
+          <h6>Help</h6>
+        </div>
+        <div class="footer-social">
+          <h4>Stay connected</h4>
+          <div class="social-icons">
+            <img src="/img/instagram.png" alt="Instagram">
+            <img src="/img/facebook.png" alt="Facebook">
+          </div>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact US</h4>
+          <h6>Informar o telefone</h6>
+          <h6>Informar o email. ex: email@email.com</h6>
+          <h6>Informa o endereço</h6>
+        </div>
+      </div>
+    </div>
+    <div class="last">
+      DevSuperior 2021 - Use like you want.
+    </div>
+  </footer>
 </body>
+
 </html>
