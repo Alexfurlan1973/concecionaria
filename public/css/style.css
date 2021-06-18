@@ -397,7 +397,7 @@ footer .last {
 }
 
 /* Ajustando Responsividade */
-@media (max-width: 576px) {
+@media (max-width: 640px) {
     nav ul li {
         display: none;
     }
@@ -478,6 +478,10 @@ footer .last {
     .footer-links {
         flex-direction: column;
         padding-left: 10%;
+    }
+
+    .last {
+        font-size: 12px;
     }
     
 }
