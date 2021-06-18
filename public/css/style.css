@@ -11,7 +11,8 @@
 }
 
 :root {
-    --orange: #f78b00;
+    /*--orange: #f78b00;*/
+    --orange: #39ac73;
     --blue: #00285f;
     --gray: #ededed;
     --grey: #dedede;
@@ -94,7 +95,9 @@ nav ul button:hover {
     max-width: 1000px;
     min-width: 300px;
     height: 450px;
-    background: var(--blue);
+    /*background: #001a4d #f2f2f2;*/
+    background-image: url(../img/nissan-vmotion.jpg);
+    background-repeat: round;
     border-radius: 10px;
     box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.9);
     -webkit-box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.9);
@@ -107,13 +110,14 @@ nav ul button:hover {
     width: 50%;
     position: absolute;
     right: 2%;
-    bottom: 2%;
+    bottom: 10%;
+    border-radius: 40px;
 }
 
 .header-block .text {
     position: absolute;
-    bottom: 30%;
-    left: 15%;
+    top: 16%;
+    left: 12%;
 }
 
 .header-block .text h2 {
@@ -406,7 +410,7 @@ footer .last {
         width: 70%;
         position: absolute;
         right: 16%;
-        top: 20%;
+        top: 10%;
     }
 
     .header-block .text {
