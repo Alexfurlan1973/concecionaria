@@ -1,0 +1,70 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+form {
+    font-size: 16px;
+    max-width: 500px;
+    margin-left: 6px;
+    margin-right: 0px;
+}
+
+.content {
+    background: #ccc;
+    padding: 0px 10px 10px 0px;
+    max-width: 500px;
+    min-height: 500px;    
+    margin: 150px auto;
+
+    position: relative;   
+}
+
+h1 {
+    color: #333;
+}
+
+input, textarea {
+    width: 474px;
+    padding: 10px;
+}
+
+.enviar input {
+    background: #069;
+    height: 40px;
+    width: 150px;
+    font-weight: bold;
+    border-radius: 5px;
+    -wbkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border: 1px solid;
+    color: #fff;
+    cursor: pointer;
+}
+
+.enviar input:hover {
+    background: #078;
+}
+
+.voltar button {
+    background: #069;
+    height: 40px;
+    width: 150px;
+    font-weight: bold;
+    border-radius: 5px;
+    -wbkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border: 1px solid;
+    color: #fff;
+    cursor: pointer;
+}
+
+.voltar button:hover{
+    background: #078;
+}
+
+textarea {
+    width: 474px;
+    height: 120px;
+    line-height: 20px;
+}
