@@ -1,5 +1,7 @@
 # Concecionaria
 Loja de Carros
 
-## Tarefas a serem feitas
-1. 
+## Descrição
+Este é um projeto escolar.
+Estou trabalhando nele aos poucos.
+Entrega final programada para o final de agosto/2021.
