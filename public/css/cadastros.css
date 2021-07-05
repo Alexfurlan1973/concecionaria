@@ -7,8 +7,8 @@
     font-family: "Roboto", sans-serif;
 }
 
-.contente {
-    max-width: 1000px;
+.content {
+    max-width: 2000px;
     min-width: 300px;
     margin: 0 auto;
     display: flex;
@@ -59,6 +59,7 @@ ul li a:hover {
 }
 
 img {
-    width: 1000px;
-    height: 550px;
+    width: 50%;
+    height: 50%;
+    border-radius: 10px;
 }

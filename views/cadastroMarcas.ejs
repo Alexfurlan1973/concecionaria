@@ -2,5 +2,20 @@
     <title>
         <%= title %>
     </title>
+    <link rel="stylesheet" href="/css/marcas.css">
 </head>
-<h1>Cadastro de Marcas</h1>
+<body>
+    <div class="content">
+        <div class="alinha">
+            <div class="hr">
+                <h1>Cadastro de Marcas</h1>
+                <hr>
+            </div>
+            <form action="" name="marcas" method="POST">
+                <label for="cor">Nome da Marca</label>
+                <input type="text" name="nomeDaMarca" id="nomeDaMarca" placeholder="Digite o nome da marca para cadastrar" required="required" />
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</body>

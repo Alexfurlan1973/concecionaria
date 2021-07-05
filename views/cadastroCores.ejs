@@ -2,5 +2,20 @@
     <title>
         <%= title %>
     </title>
+    <link rel="stylesheet" href="/css/cores.css">
 </head>
-<h1>Cadastro de Cores</h1>
+<body>
+    <div class="content">
+        <div class="alinha">
+            <div class="hr">
+                <h1>Cadastro de Cores</h1>
+                <hr>
+            </div>
+            <form action="" name="cores" method="POST">
+                <label for="cor">Nome da cor</label>
+                <input type="text" name="nomeDaCor" id="nomeDaCor" placeholder="Digite o nome da cor para cadastrar" required="required" />
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</body>

@@ -2,5 +2,30 @@
     <title>
         <%= title %>
     </title>
+    <link rel="stylesheet" href="/css/carros.css">
 </head>
-<h1>Cadastro de Carros</h1>
+<body>
+    <div class="content">
+        <div class="alinha">
+            <div class="hr">
+                <h1>Cadastro de Carros</h1>
+                <hr>
+            </div>
+            <form action="" name="carros" method="POST">
+                <label for="cor">Nome do carro</label>
+                <input type="text" name="carro" id="carro" placeholder="Digite o nome do veículo para cadastrar" required="required" />
+                <label for="cor">Placa do carro</label>
+                <input type="text" name="placa" id="placa" placeholder="Digite a placa do veículo" required="required" />
+                <label for="cor">Câmbio</label>
+                <input type="text" name="cambio" id="cambio" placeholder="Manual ou Automático" required="required" />
+                <label for="cor">Ano do carro</label>
+                <input type="text" name="ano" id="ano" placeholder="Digite o ano do veículo" required="required" />
+                <label for="cor">Quilometragem</label>
+                <input type="text" name="km" id="km" placeholder="Digite a quilometragem do veículo" required="required" />
+                <label for="cor">Motor</label>
+                <input type="text" name="motor" id="motor" placeholder="Qual a potencia do motor" required="required" />                
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</body>

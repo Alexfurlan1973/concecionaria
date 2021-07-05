@@ -2,5 +2,20 @@
     <title>
         <%= title %>
     </title>
+    <link rel="stylesheet" href="/css/opcionais.css">
 </head>
-<h1>Cadastro de Opcionais</h1>
+<body>
+    <div class="content">
+        <div class="alinha">
+            <div class="hr">
+                <h1>Cadastro de Opcionais</h1>
+                <hr>
+            </div>
+            <form action="" name="opcionais" method="POST">
+                <label for="cor">Nome do opcional</label>
+                <input type="text" name="nomeDoOpcional" id="nomeDoOpcional" placeholder="Digite o nome do opcional para cadastrar" required="required" />
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</body>
