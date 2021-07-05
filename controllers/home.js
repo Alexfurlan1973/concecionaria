@@ -11,3 +11,11 @@ module.exports.home = (req, res) => {
         pagina: 'home'
     });
 }
+
+module.exports.exibeVeiculo = (req, res) => {
+    res.render('detalhes', {
+        title: 'Detalhe do Veículo',
+        pagina: 'detalhes',
+        id: req.params.id
+    })
+}
