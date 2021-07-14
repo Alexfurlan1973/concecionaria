@@ -71,7 +71,10 @@ form button {
     margin: 10px;
 }
 
-
+form button a {
+    text-decoration: none;
+    color: white;
+}
 
 
 /* Ajustando Responsividade */
