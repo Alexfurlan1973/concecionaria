@@ -1,3 +1,5 @@
+const { UnorderedCollection } = require("http-errors");
+
 module.exports.index = (req, res) => {
     res.render('index', {
         title: 'Loja de Carros',
@@ -7,6 +9,50 @@ module.exports.index = (req, res) => {
 
 module.exports.home = (req, res) => {
     res.render('home', {
+        carros: [{
+            id: 1,
+            name: 'Uno',
+            descricao: 'loren'
+        },
+        {
+            id: 2,
+            name: 'Uno',
+            descricao: 'loren'
+        },
+        {
+            id: 3,
+            name: 'Uno',
+            descricao: 'loren'
+        },
+        {
+            id: 4,
+            name: 'Uno',
+            descricao: 'loren'
+        },{
+            id: 5,
+            name: 'Uno',
+            descricao: 'loren'
+        },
+        {
+            id: 6,
+            name: 'Uno',
+            descricao: 'loren'
+        },
+        {
+            id: 7,
+            name: 'Uno',
+            descricao: 'loren'
+        },
+        {
+            id: 8,
+            name: 'Uno',
+            descricao: 'loren'
+        },
+        {
+            id: 9,
+            name: 'Uno',
+            descricao: 'loren'
+        },],
         title: 'Loja de Carros',
         pagina: 'home'
     });

@@ -44,6 +44,10 @@
         <button class="search-button">Search</button>
       </div>
       <div class="card-wrapper">
+        <% for (let i = 0; i <= 8; i++) { %>
+          <%- include('partials/cards.ejs', { carro: carros[i] }) %>
+        <% } %>
+        <!--
         <div class="card-item">
           <img src="/img/car-header.png" alt="Car" />
           <div class="card-content">
@@ -142,7 +146,7 @@
             </p>
             <button type="button">I want this!</button>
           </div>
-        </div>
+        </div>-->
       </div>
       <div class="tfb-query topo" data-tipo="carros" data-style="1"></div>
     </div>
