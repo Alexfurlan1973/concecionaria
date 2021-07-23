@@ -11,7 +11,7 @@ form {
 }
 
 .content {
-    background: #ccc;
+    background: #39ac73;
     padding: 0px 10px 10px 0px;
     max-width: 500px;
     min-height: 500px;    
@@ -29,17 +29,22 @@ input, textarea {
     padding: 10px;
 }
 
+.alinhar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 .enviar input {
-    background: #069;
-    height: 40px;
     width: 150px;
-    font-weight: bold;
+    height: 50px;
     border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border: 1px solid;
-    color: #fff;
+    border: none;
+    background: #00285f;
+    color: white;
     cursor: pointer;
+    font-size: 1.1em;
+    transition: 0.3s ease;
 }
 
 .enviar input:hover {
@@ -47,16 +52,20 @@ input, textarea {
 }
 
 .enviar button {
-    background: #069;
-    height: 40px;
     width: 150px;
-    font-weight: bold;
+    height: 50px;
     border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border: 1px solid;
-    color: #fff;
+    border: none;
+    background: #00285f;
+    color: white;
     cursor: pointer;
+    font-size: 1.1em;
+    transition: 0.3s ease;
+}
+
+.enviar button a {
+    text-decoration: none;
+    color: white;
 }
 
 .enviar button:hover{
