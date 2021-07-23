@@ -12,7 +12,11 @@ module.exports.home = (req, res) => {
         carros: [{
             id: 1,
             name: 'Uno',
-            descricao: 'loren'
+            descricao: 'loren',
+            principal: {
+                id:2,
+                caminho: '/img/car-header.png'
+            }
         },
         {
             id: 2,
