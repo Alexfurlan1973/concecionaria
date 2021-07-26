@@ -21,12 +21,29 @@
             <%= title %>
           </strong>
         </p>
-        <ul>
-          <li><a href="#catalog">Catálogo</a></li>
-          <li><a href="#about">Sobre nós</a></li>
-          <li><a href="/contato">Contato</a></li>
+        <ul class="linha">
+          <li class="li"><a href="#catalog">Catálogo</a></li>
+          <li class="li"><a href="#about">Sobre nós</a></li>
+          <li class="li"><a href="/contato">Contato</a></li>
         </ul>
       </nav>
+
+      <div id="menu">
+        <div id="menu-bar" onclick="menuOnClick()">
+          <div id="bar1" class="bar"></div>
+          <div id="bar2" class="bar"></div>
+          <div id="bar3" class="bar"></div>
+        </div>
+        <nav class="nav" id="nav">
+          <ul class="coluna">
+            <li><a href="#catalog">Catálogo</a></li>
+            <li><a href="#about">Sobre nós</a></li>
+            <li><a href="/contato">Contato</a></li>
+          </ul>
+        </nav> 
+      </div>
+      <div class="menu-bg" id="menu-bg"></div>
+
       <div class="header-block">
         <div class="text">
           <h2>O carro perfeito para você!</h2>
@@ -42,12 +59,12 @@
         <h3>Catálogo</h3>
       </div>
       <div class="filter-card">
-        <input type="text" class="search-input" placeholder="Procure o seu modelo favorito" />
-        <button class="search-button">Search</button>
+        <input type="search" class="search-input" placeholder="Procure o seu modelo favorito" />
+        <button id="buscar" class="search-button">Search</button>
       </div>
       <div class="card-wrapper">
         <% for (let i = 0; i <= 8; i++) { %>
-          <%- include('partials/cards.ejs', { carro: carros[i] }) %>
+          <%- include('partials/cards.ejs', { carro: carros[i] } ) %>
         <% } %>
       </div>
       <div class="tfb-query topo" data-tipo="carros" data-style="1"></div>
@@ -113,4 +130,40 @@
   </footer>
 </body>
 
+<script src="/js/menuHamburguer.js"></script>
+<script>
+  const btnBusca = document.getElementById('buscar')
+  const ulResultados = document.getElementById('resultados')
+    
+  btnBusca.onclick = () => {
+    const texto = document.querySelector('input').value
+    buscar(texto)
+    alterarUrl('query', texto)
+  }
+
+  async function buscar(texto) {
+    const fetchResult = await fetch(`http://localhost:3000/?query=${texto ? texto : ''}`)
+    const lista = await fetchResult.json()
+
+    ulResultados.innerHTML = ''
+
+    for (const dado of lista) {
+      ulResultados.innerHTML += `<li>Nome: ${dado.nome}, Tipo: ${dado.tipo}</li>`
+    }
+  }
+
+  function alterarUrl(key, value) {
+    const query = new URLSearchParams()
+    query.set(key, value)
+    location.search = query.toString()
+  }
+
+  window.onload = () => {
+    const query = new URLSearchParams(location.search)
+    const valorBuscado = query.get('query')
+
+    document.querySelector('input').value = valorBuscado
+    buscar(valorBuscado)
+  }
+</script>
 </html>
