@@ -11,7 +11,7 @@ module.exports.home = (req, res) => {
     res.render('home', {
         carros: [{
             id: 1,
-            name: 'Uno',
+            name: 'Uno 1.6R',
             descricao: 'loren',
             principal: {
                 id:2,
@@ -20,41 +20,41 @@ module.exports.home = (req, res) => {
         },
         {
             id: 2,
-            name: 'Uno',
+            name: 'Camaro V8 SS',
             descricao: 'loren'
         },
         {
             id: 3,
-            name: 'Uno',
+            name: 'Ka 1.0',
             descricao: 'loren'
         },
         {
             id: 4,
-            name: 'Uno',
+            name: 'Chevette 1.6 SL',
             descricao: 'loren'
         },{
             id: 5,
-            name: 'Uno',
+            name: 'City LX',
             descricao: 'loren'
         },
         {
             id: 6,
-            name: 'Uno',
+            name: 'Golf 2.0 MI Flex Comfortline Sport',
             descricao: 'loren'
         },
         {
             id: 7,
-            name: 'Uno',
+            name: 'Fusca 67',
             descricao: 'loren'
         },
         {
             id: 8,
-            name: 'Uno',
+            name: 'Saturn SC 1.9 Cupê',
             descricao: 'loren'
         },
         {
             id: 9,
-            name: 'Uno',
+            name: 'Clio Hatch Expression',
             descricao: 'loren'
         },],
         title: 'Loja de Carros',

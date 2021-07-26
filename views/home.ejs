@@ -40,12 +40,12 @@
         <h3>Catálogo</h3>
       </div>
       <div class="filter-card">
-        <input type="text" class="search-input" placeholder="Procure o seu modelo favorito" />
-        <button class="search-button">Search</button>
+        <input type="search" class="search-input" placeholder="Procure o seu modelo favorito" />
+        <button id="buscar" class="search-button">Search</button>
       </div>
       <div class="card-wrapper">
         <% for (let i = 0; i <= 8; i++) { %>
-          <%- include('partials/cards.ejs', { carro: carros[i] }) %>
+          <%- include('partials/cards.ejs', { carro: carros[i] } ) %>
         <% } %>
       </div>
       <div class="tfb-query topo" data-tipo="carros" data-style="1"></div>
@@ -111,4 +111,39 @@
   </footer>
 </body>
 
+<script>
+  const btnBusca = document.getElementById('buscar')
+  const ulResultados = document.getElementById('resultados')
+    
+  btnBusca.onclick = () => {
+    const texto = document.querySelector('input').value
+    buscar(texto)
+    alterarUrl('query', texto)
+  }
+
+  async function buscar(texto) {
+    const fetchResult = await fetch(`http://localhost:3000/?query=${texto ? texto : ''}`)
+    const lista = await fetchResult.json()
+
+    ulResultados.innerHTML = ''
+
+    for (const dado of lista) {
+      ulResultados.innerHTML += `<li>Nome: ${dado.nome}, Tipo: ${dado.tipo}</li>`
+    }
+  }
+
+  function alterarUrl(key, value) {
+    const query = new URLSearchParams()
+    query.set(key, value)
+    location.search = query.toString()
+  }
+
+  window.onload = () => {
+    const query = new URLSearchParams(location.search)
+    const valorBuscado = query.get('query')
+
+    document.querySelector('input').value = valorBuscado
+    buscar(valorBuscado)
+  }
+</script>
 </html>
