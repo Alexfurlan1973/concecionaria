@@ -55,7 +55,7 @@ module.exports.index = (req, res) => {
     });
 }
 
-/*module.exports.home = (req, res) => {
+module.exports.home = (req, res) => {
     res.render('home', {
         carros: [{
             id: 1,
@@ -108,7 +108,7 @@ module.exports.index = (req, res) => {
         title: 'Loja de Carros',
         pagina: 'home'
     });
-}*/
+}
 
 module.exports.exibeVeiculo = (req, res) => {
     res.render('detalhes', {
