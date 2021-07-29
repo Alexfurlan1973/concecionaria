@@ -30,6 +30,7 @@ app.use('/users', usersRouter);
 app.use('/loginCadastro', loginCadastroRouter);
 app.use('/contato', contatoRouter);
 app.use('/cadastros', cadastrosRouter);
+app.use('/admin', loginCadastroRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

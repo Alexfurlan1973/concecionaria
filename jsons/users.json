@@ -1,3 +1,9 @@
 [
-    
+    {
+        "id": "dd9bb16d-2f31-497c-81cf-3fdb5c8d5652",
+        "nome": "alex",
+        "email": "furlan@email.com",
+        "senha": "$2b$08$juEwethr4QCTJNwdNA/wWe82mDX7znJOv2niQl2azD8.KrC6AfRpi",
+        "enviar": "Cadastrar"
+    }
 ]

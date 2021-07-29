@@ -8,6 +8,24 @@ const { findUserByEmail, find } = require('../helpers/users');
 
 const CAMINHO = path.join(__dirname, '..', 'jsons', 'users.json');
 
+module.exports.paginaLogin = (req, res) => {
+    res.render('login', {
+        title: 'Loja de Carros - Login',
+        pagina: 'login',
+        user: null/*req.session.usuario,*/,
+        content: null,
+    });
+}
+
+module.exports.paginaCadastro = (req, res) => {
+    res.render('cadastro', {
+        title: 'Loja de Carros - Cadastro',
+        pagina: 'cadastro',
+        user: null/*req.session.usuario,*/,
+        content: null,
+    });
+}
+
 module.exports.loginCadastro = (req, res) => {
     res.render('loginCadastro', {
         title: 'Loja de Carros',
@@ -17,23 +35,23 @@ module.exports.loginCadastro = (req, res) => {
 }
 
 module.exports.cadastrar = function (req, res) {
-    const { nome_cad, senha_cad, confirma_senha_cad, email_cad } = req.body;
-    const foundUser = findUserByEmail(email_cad, users);
+    const { nome, senha, confirmaSenha, email } = req.body;
+    const foundUser = findUserByEmail(email, users);
 
     if (foundUser) {
-        res.render('loginCadastro', {
+        res.render('cadastro', {
             error: {
-                email_cad: 'Email já cadastrado',
+                email: 'Email já cadastrado',
             },
             content: req.body,
         });
         return
     }
 
-    if (senha_cad != confirma_senha_cad) {
-        res.render('loginCadastro', {
+    if (senha != confirmaSenha) {
+        res.render('cadastro', {
             error: {
-                senha_cad: 'Senhas diferentes',
+                senha: 'Senhas diferentes',
             },
             content: req.body,
         });
@@ -43,10 +61,10 @@ module.exports.cadastrar = function (req, res) {
     const usuario = {
         id: uuidV4(),
         ...req.body,
-        senha_cad: createHash(senha_cad),
+        senha: createHash(senha),
     };
 
-    delete usuario.confirma_senha_cad;
+    delete usuario.confirmaSenha;
 
     users.push(usuario);
 
@@ -57,16 +75,16 @@ module.exports.cadastrar = function (req, res) {
 };
 
 module.exports.login = function (req, res) {
-    const { email, password } = req.body;
+    const { email, senha } = req.body;
   
     const foundUser = find(email, users, 'email');
   
     if (!foundUser) {
-      res.render('loginCadastro');
+      res.render('login');
     }
   
-    if (!compareHash(password, foundUser.password)) {
-      res.render('loginCadastro');
+    if (!compareHash(senha, foundUser.senha)) {
+      res.render('login');
     }
   
     req.session.usuario = foundUser;
