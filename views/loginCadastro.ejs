@@ -49,20 +49,20 @@
                      <h1>Cadastro</h1>
                      <p>
                          <label for="nome_cad">Seu nome</label>
-                         <input id="nome_cad" name="nome_cad" required="required" type="text" placeholder="Nome" />
+                         <input value="<%= content && content.nome_cad ? content.nome_cad : '' %>" id="nome_cad" name="nome_cad"  type="text" placeholder="Nome" />
                      </p>
 
                      <p>
                          <label for="email_cad">Seu e-mail</label>
-                         <input id="email_cad" name="email_cad" required="required" type="email" placeholder="email@email.com" />
+                         <input id="email_cad" name="email_cad"  type="email" placeholder="email@email.com" />
                      </p>
 
                      <p>
                          <label for="senha_cad">Defina a sua senha</label>
-                         <input id="senha_cad" name="senha_cad" required="required" type="password" placeholder="1234" />
+                         <input id="senha_cad" name="senha_cad"  type="password" placeholder="1234" />
                      </p>
                         <label for="confirma_senha_cad">Confirme a sua senha</label>
-                        <input id="confirma_senha_cad" name="confirma_senha_cad" required="required" type="password" placeholder="1234" />
+                        <input id="confirma_senha_cad" name="confirma_senha_cad"  type="password" placeholder="1234" />
                      <p>
                         <input type="submit" value="Cadastrar" />
                      </p>

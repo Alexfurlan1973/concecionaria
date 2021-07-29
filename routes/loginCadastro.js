@@ -4,7 +4,7 @@ const router = express.Router();
 const loginCadastro = require('../controllers/loginCadastro');
 
 router.get('/', loginCadastro.loginCadastro);
-router.post('/loginCadastro', loginCadastro.cadastrar);
-router.post('/loginCadastro#paralogin', loginCadastro.login);
+router.post('/', loginCadastro.cadastrar);
+router.post('/loginCadastro', loginCadastro.login);
 
 module.exports = router;
