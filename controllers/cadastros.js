@@ -2,7 +2,7 @@ module.exports.cadastros = (req, res) => {
     res.render('cadastros', {
         title: 'Pagina de Cadastros',
         pagina: 'cadastros',
-        user: null/*req.session.usuario,*/
+        user: req.session.usuario,
     });
 }
 

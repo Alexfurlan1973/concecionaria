@@ -8,31 +8,23 @@ const { findUserByEmail, find } = require('../helpers/users');
 
 const CAMINHO = path.join(__dirname, '..', 'jsons', 'users.json');
 
-module.exports.paginaLogin = (req, res) => {
-    res.render('login', {
-        title: 'Loja de Carros - Login',
-        pagina: 'login',
-        user: null/*req.session.usuario,*/,
-        content: null,
-    });
-}
-
 module.exports.paginaCadastro = (req, res) => {
     res.render('cadastro', {
         title: 'Loja de Carros - Cadastro',
         pagina: 'cadastro',
-        user: null/*req.session.usuario,*/,
-        content: null,
+        user: null,/*req.session.usuario,*/
+        error: {},
+        content: {},
     });
 }
 
-module.exports.loginCadastro = (req, res) => {
+/*module.exports.loginCadastro = (req, res) => {
     res.render('loginCadastro', {
         title: 'Loja de Carros',
         pagina: 'loginCadastro',
         content: null,
     });
-}
+}*/
 
 module.exports.cadastrar = function (req, res) {
     const { nome, senha, confirmaSenha, email } = req.body;
@@ -70,9 +62,17 @@ module.exports.cadastrar = function (req, res) {
 
     fs.writeFileSync(CAMINHO, JSON.stringify(users));
 
-    res.redirect('/cadastros');
+    res.redirect('/admin/login');
     return
 };
+
+module.exports.paginaLogin = (req, res) => {
+    res.render('login', {
+        title: 'Loja de Carros - Login',
+        pagina: 'login',
+        user: null, /*req.session.usuario,*/
+    });
+}
 
 module.exports.login = function (req, res) {
     const { email, senha } = req.body;
