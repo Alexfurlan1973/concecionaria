@@ -4,9 +4,27 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Veiculos extends Model {
-
     static associate(models) {
-      // define association here
+      this.hasMany(models.Cor, {
+        foreignKey: 'idVeiculo',
+        targetKey: 'idVeiculo'
+      }),
+      this.hasMany(models.Marcas, {
+        foreignKey: 'idVeiculo',
+        targetKey: 'idVeiculo'
+      }),
+      this.hasMany(models.Opcionais, {
+        foreignKey: 'idVeiculo',
+        targetKey: 'idVeiculo'
+      }),
+      this.hasMany(models.Administradores, {
+        foreignKey: 'idVeiculo',
+        targetKey: 'idVeiculo'
+      }),
+      this.hasMany(models.urlImagens, {
+        foreignKey: 'idUrlImagens',
+        targetKey: 'idVeiculo'
+      })
     }
   };
 

@@ -4,9 +4,11 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Administradores extends Model {
-
     static associate(models) {
-      // define association here
+      this.hasMany(models.Veiculos, {
+        foreignKey: 'idVeiculo',
+        id: 'idAdmin'
+      })
     }
   };
 
@@ -18,7 +20,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     nome: DataTypes.STRING,
     email: DataTypes.STRING,
-    senha: DataTypes.STRING
+    senha: DataTypes.STRING,
+    idVeiculo: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Veiculos'
+      },
+    }
   }, {
     sequelize,
     modelName: 'Administradores',
