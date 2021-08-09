@@ -1,17 +1,17 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Opcionais', {
+    await queryInterface.createTable('Cors', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      idOpcionais: {
-        type: Sequelize.NUMBER
+      idCor: {
+        type: Sequelize.INTEGER
       },
-      opcionais: {
+      cor: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -25,6 +25,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Opcionais');
+    await queryInterface.dropTable('Cors');
   }
 };
