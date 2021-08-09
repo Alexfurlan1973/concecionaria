@@ -41,7 +41,13 @@ module.exports = (sequelize, DataTypes) => {
     km: DataTypes.STRING,
     motor: DataTypes.STRING,
     descricao: DataTypes.STRING,
-    valor: DataTypes.STRING
+    valor: DataTypes.STRING,
+    idUrlImagens: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'urlImagens'
+      },
+    }
   }, {
     sequelize,
     modelName: 'Veiculos',

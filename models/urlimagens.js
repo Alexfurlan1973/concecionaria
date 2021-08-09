@@ -4,9 +4,11 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class urlImagens extends Model {
-
     static associate(models) {
-      // define association here
+      this.belongsTo(models.Veiculos, {
+        foreignKey: 'idUrlImagens',
+        id: 'idUrlImagens'
+      })
     }
   };
 

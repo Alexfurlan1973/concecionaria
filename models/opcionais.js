@@ -4,9 +4,11 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Opcionais extends Model {
-
     static associate(models) {
-      // define association here
+      this.belongsTo(models.Veiculos, {
+        foreignKey: 'idVeiculo',
+        id: 'idOpcionais'
+      })
     }
   };
 
@@ -16,7 +18,13 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true
     },
-    opcionais: DataTypes.STRING
+    opcionais: DataTypes.STRING,
+    idVeiculo: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Veiculos'
+      },
+    }
   }, {
     sequelize,
     modelName: 'Opcionais',

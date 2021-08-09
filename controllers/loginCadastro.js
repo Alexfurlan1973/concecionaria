@@ -91,11 +91,3 @@ module.exports.login = function (req, res) {
   
     res.redirect('/cadastros');
   };
-
-
-  
-  router.post('/logout', (req, res) => {
-    req.session.destroy()
-    res.redirect('/users/login')
-  })
-
