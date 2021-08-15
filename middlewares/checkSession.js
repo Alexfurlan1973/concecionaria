@@ -1,6 +1,6 @@
 module.exports = function (req, res, next) {
     if (!req.session.usuario) {
-      res.redirect('/loginCadastro#paralogin');
+      res.redirect('/admin/login');
     }
     next();
   };

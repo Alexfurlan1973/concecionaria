@@ -2,17 +2,18 @@
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
-  class Administradores extends Model {
+  class Administrador extends Model {
     static associate(models) {
-      this.hasMany(models.Veiculos, {
+      this.hasMany(models.Veiculo, {
         foreignKey: 'idAdmin',
         id: 'idAdmin'
       })
     }
   };
 
-  Administradores.init({
+  Administrador.init({
     idAdmin: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -23,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     senha: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'Administradores',
+    modelName: 'Administrador',
   });
-  return Administradores;
+  return Administrador;
 };

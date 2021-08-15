@@ -5,7 +5,7 @@ const loginCadastro = require('../controllers/loginCadastro');
 
 router.get('/cadastro', loginCadastro.paginaCadastro);
 router.get('/login', loginCadastro.paginaLogin);
-router.post('/cadastro', loginCadastro.cadastrar);
+router.post('/cadastro', loginCadastro.criarAdmin);
 router.post('/login', loginCadastro.login);
 
 module.exports = router;

@@ -3,31 +3,31 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Opcionais extends Model {
+  class Marca extends Model {    
     static associate(models) {
-      this.belongsTo(models.Veiculos, {
+      this.belongsTo(models.Veiculo, {
         foreignKey: 'idVeiculo',
-        id: 'idOpcionais'
+        id: 'idMarca'
       })
     }
   };
 
-  Opcionais.init({
-    idOpcionais: {
+  Marca.init({
+    idMarca: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    opcionais: DataTypes.STRING,
+    marca: DataTypes.STRING,
     idVeiculo: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'Veiculos'
+        model: 'Veiculo'
       },
     }
   }, {
     sequelize,
-    modelName: 'Opcionais',
+    modelName: 'Marca',
   });
-  return Opcionais;
+  return Marca;
 };

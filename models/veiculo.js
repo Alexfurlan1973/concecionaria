@@ -3,13 +3,13 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Veiculos extends Model {
+  class Veiculo extends Model {
     static associate(models) {
       this.hasMany(models.Cor, {
         foreignKey: 'idVeiculo',
         targetKey: 'idVeiculo'
       }),
-      this.hasMany(models.Marcas, {
+      this.hasMany(models.Marca, {
         foreignKey: 'idVeiculo',
         targetKey: 'idVeiculo'
       }),
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'idVeiculo',
         targetKey: 'idVeiculo'
       }),
-      this.hasMany(models.Administradores, {
+      this.hasMany(models.Administrador, {
         foreignKey: 'idVeiculo',
         targetKey: 'idVeiculo'
       }),
@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
-  Veiculos.init({
+  Veiculo.init({
     idVeiculo: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -50,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    modelName: 'Veiculos',
+    modelName: 'Veiculo',
   });
-  return Veiculos;
+  return Veiculo;
 };
