@@ -3,16 +3,16 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Cor extends Model {
+  class Cores extends Model {
     static associate(models) {
-      this.belongsTo(models.Veiculo, {
+      this.belongsTo(models.Veiculos, {
         foreignKey: 'idVeiculo',
         id: 'idCor'
       })
     }
   };
 
-  Cor.init({
+  Cores.init({
     idCor: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -22,12 +22,12 @@ module.exports = (sequelize, DataTypes) => {
     idVeiculo: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'Veiculo'
+        model: 'Veiculos'
       },
     }
   }, {
     sequelize,
-    modelName: 'Cor',
+    modelName: 'Cores',
   });
-  return Cor;
+  return Cores;
 };

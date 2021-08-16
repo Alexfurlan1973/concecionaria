@@ -67,7 +67,7 @@ module.exports.criarAdmin = (async (req, res) => {
         res.send('Faltou preencher algum campo.')
     }
 
-    await models.Administrador.create(admin)
+    await models.administradores.create(admin)
     res.redirect('/admin/login');
     return
 })

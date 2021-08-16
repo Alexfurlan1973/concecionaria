@@ -5,7 +5,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class urlImagens extends Model {
     static associate(models) {
-      this.belongsTo(models.Veiculo, {
+      this.belongsTo(models.Veiculos, {
         foreignKey: 'idUrlImagens',
         id: 'idUrlImagens'
       })
