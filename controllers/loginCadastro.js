@@ -20,9 +20,15 @@ module.exports.paginaCadastro = (req, res) => {
     });
 }
 
-/*module.exports.cadastrar = function (req, res) {
-    const { nome, senha, confirmaSenha, email } = req.body;
-    const foundUser = findUserByEmail(email, users);
+module.exports.criarAdmin = (async (req, res) => {
+    const admin = req.body
+    const { nome, email, senha, confirmaSenha } = req.body
+    const foundUser = findUserByEmail(email, users)
+
+
+    if (!admin.nome || !admin.email || !admin.senha) {
+        res.send('Faltou preencher algum campo.')
+    }
 
     if (foundUser) {
         res.render('cadastro', {
@@ -45,7 +51,7 @@ module.exports.paginaCadastro = (req, res) => {
     }
 
     const usuario = {
-        id: uuidV4(),
+        idAdmin: uuidV4(),
         ...req.body,
         senha: createHash(senha),
     };
@@ -54,20 +60,7 @@ module.exports.paginaCadastro = (req, res) => {
 
     users.push(usuario);
 
-    fs.writeFileSync(CAMINHO, JSON.stringify(users));
-
-    res.redirect('/admin/login');
-    return
-};*/
-
-module.exports.criarAdmin = (async (req, res) => {
-    const admin = req.body
-
-    if (!admin.nome || !admin.email || !admin.senha) {
-        res.send('Faltou preencher algum campo.')
-    }
-
-    await models.administradores.create(admin)
+    await models.Administradores.create(admin)
     res.redirect('/admin/login');
     return
 })

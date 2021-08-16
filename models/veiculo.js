@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'idVeiculo',
         targetKey: 'idVeiculo'
       }),
-      this.hasMany(models.administradores, {
+      this.hasMany(models.Administradores, {
         foreignKey: 'idVeiculo',
         targetKey: 'idVeiculo'
       }),
