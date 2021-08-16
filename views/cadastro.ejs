@@ -24,12 +24,12 @@
                 <p>
                     <label for="email">Seu e-mail</label>
                     <input value="<%= content.email ? content.email : '' %>" id="email" name="email"  type="email" placeholder="email@email.com" />
-                    <span><%= error.email ? error.email : '' %></span>
+                    <span class="error" ><%= error.email ? error.email : '' %></span>
                 </p>
                 <p>
                     <label for="senha">Defina a sua senha</label>
                     <input id="senha" name="senha"  type="password" placeholder="1234" />
-                    <%= error.senha ? error.senha : '' %>
+                    <span class="error"><%= error.senha ? error.senha : '' %></p><span>
                 </p>
                    <label for="confirmaSenha">Confirme a sua senha</label>
                    <input id="confirmaSenha" name="confirmaSenha"  type="password" placeholder="1234" />

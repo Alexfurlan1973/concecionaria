@@ -17,9 +17,9 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'idVeiculo',
         targetKey: 'idVeiculo'
       }),
-      this.hasMany(models.Administradores, {
-        foreignKey: 'idVeiculo',
-        targetKey: 'idVeiculo'
+      this.belongsTo(models.administradores, {
+        foreignKey: 'idAdmin',
+        targetKey: 'idAdmin'
       }),
       this.hasMany(models.urlImagens, {
         foreignKey: 'idUrlImagens',

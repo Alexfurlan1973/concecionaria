@@ -21,12 +21,12 @@ module.exports.paginaCadastro = (req, res) => {
 }
 
 module.exports.criarAdmin = (async (req, res) => {
-    const admin = req.body
+    /*const admin = req.body*/
     const { nome, email, senha, confirmaSenha } = req.body
     const foundUser = findUserByEmail(email, users)
 
 
-    if (!admin.nome || !admin.email || !admin.senha) {
+    if (!nome || !email || !senha) {
         res.send('Faltou preencher algum campo.')
     }
 
@@ -51,16 +51,16 @@ module.exports.criarAdmin = (async (req, res) => {
     }
 
     const usuario = {
-        idAdmin: uuidV4(),
+      /*  idAdmin: uuidV4(),*/
         ...req.body,
         senha: createHash(senha),
     };
 
     delete usuario.confirmaSenha;
 
-    users.push(usuario);
+   /* users.push(usuario);*/
 
-    await models.Administradores.create(admin)
+    await models.administradores.create(usuario)
     res.redirect('/admin/login');
     return
 })
@@ -73,17 +73,23 @@ module.exports.paginaLogin = (req, res) => {
     });
 }
 
-module.exports.login = function (req, res) {
+module.exports.login = async function (req, res) {
     const { email, senha } = req.body;
   
-    const foundUser = find(email, users, 'email');
+    const foundUser = await models.administradores.findOne({
+        where: {
+            email: req.body.email
+        }
+    })
   
     if (!foundUser) {
       res.render('login');
+      return
     }
   
     if (!compareHash(senha, foundUser.senha)) {
       res.render('login');
+      return
     }
   
     req.session.usuario = foundUser;
