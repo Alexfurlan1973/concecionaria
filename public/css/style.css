@@ -493,7 +493,7 @@ footer .last {
     }
   
     .nav li a {
-        color: white;
+        color: var(--blue);
         font-size: 20px;
         text-decoration: none;
     }
@@ -523,7 +523,7 @@ footer .last {
     }
   
     .change .bar {
-        background-color: white;
+        background-color: var(--blue);
     }
   
     .change #bar1 {

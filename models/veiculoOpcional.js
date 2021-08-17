@@ -7,17 +7,29 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.belongsTo(models.Veiculos, {
         foreignKey: 'idVeiculo',
-        targetKey: 'idVeiculo'
+        targetKey: 'idVeiculoOpcionais'
       }),
-      this.belongsTo(models.veiculoOpcionais, {
-        foreignKey: 'idVeiculo',
-        targetKey: 'idVeiculo'
+      this.belongsTo(models.Opcionais, {
+        foreignKey: 'idOpcionais',
+        targetKey: 'idVeiculoOpcionais'
       })
     }
   };
   
   veiculoOpcionais.init({
-    idVeiculoOpcionais: DataTypes.INTEGER
+    idVeiculoOpcionais: DataTypes.INTEGER,
+    idVeiculo: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Veiculos'
+      }
+    },
+    idOpcionais: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Opcioanis'
+      }
+    }
   }, {
     sequelize,
     modelName: 'veiculoOpcionais',

@@ -21,9 +21,13 @@ module.exports.paginaCadastro = (req, res) => {
 }
 
 module.exports.criarAdmin = (async (req, res) => {
-    /*const admin = req.body*/
     const { nome, email, senha, confirmaSenha } = req.body
-    const foundUser = findUserByEmail(email, users)
+    /*const foundUser = findUserByEmail(email, users)*/
+    const foundUser = await models.Administradores.findOne({
+        where: {
+            email: req.body.email
+        }
+    })
 
 
     if (!nome || !email || !senha) {
@@ -51,16 +55,13 @@ module.exports.criarAdmin = (async (req, res) => {
     }
 
     const usuario = {
-      /*  idAdmin: uuidV4(),*/
         ...req.body,
         senha: createHash(senha),
     };
 
     delete usuario.confirmaSenha;
 
-   /* users.push(usuario);*/
-
-    await models.administradores.create(usuario)
+    await models.Administradores.create(usuario)
     res.redirect('/admin/login');
     return
 })
@@ -76,7 +77,7 @@ module.exports.paginaLogin = (req, res) => {
 module.exports.login = async function (req, res) {
     const { email, senha } = req.body;
   
-    const foundUser = await models.administradores.findOne({
+    const foundUser = await models.Administradores.findOne({
         where: {
             email: req.body.email
         }

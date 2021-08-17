@@ -5,25 +5,29 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Veiculos extends Model {
     static associate(models) {
-      this.hasMany(models.Cores, {
-        foreignKey: 'idVeiculo',
-        targetKey: 'idVeiculo'
+      this.belongsTo(models.Cores, {
+        foreignKey: 'idCor',
+        targetKey: 'idCor'
       }),
-      this.hasMany(models.Marcas, {
-        foreignKey: 'idVeiculo',
-        targetKey: 'idVeiculo'
+      this.belongsTo(models.Marcas, {
+        foreignKey: 'idMarca',
+        targetKey: 'idMarca'
       }),
-      this.hasMany(models.Opcionais, {
-        foreignKey: 'idVeiculo',
-        targetKey: 'idVeiculo'
+      this.belongsTo(models.Opcionais, {
+        foreignKey: 'idOpcionais',
+        targetKey: 'idOpcionais'
       }),
-      this.belongsTo(models.administradores, {
+      this.belongsTo(models.Administradores, {
         foreignKey: 'idAdmin',
         targetKey: 'idAdmin'
       }),
       this.hasMany(models.urlImagens, {
         foreignKey: 'idUrlImagens',
         targetKey: 'idVeiculo'
+      }),
+      this.hasMany(models.veiculoOpcionais, {
+        foreignKey: 'idVeiculo',
+        id: 'idVeiculo'
       })
     }
   };
