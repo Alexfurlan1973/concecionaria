@@ -1,5 +1,5 @@
 const models = require('../models');
-
+const { Op } = require('sequelize')
 
 module.exports.cadastros = (req, res) => {
     res.render('cadastros', {
@@ -18,6 +18,55 @@ module.exports.cadastroCarros = (req, res) => {
         content: {},
     })
 }
+
+module.exports.cadastrarCarros = (async (req, res) => {
+    const { carroCadastro } = req.body
+    const foundCarro = await models.Veiculos.findOne({
+        where: {
+            carro: req.body.carro
+        }
+    })
+
+    if (!carroCadastro.carro || !carroCadastro.placa || !carroCadastro.cambio || !carroCadastro.ano || !carroCadastro.km || !carroCadastro.motor) {
+        res.render('cadastroCarros', {
+            error: {
+                descricao: 'Faltou preencher algum campo.',
+            },
+            content: req.body,
+            title: 'Cadastro de Carros',
+        })
+        return
+    }
+
+    if (foundMarca) {
+        res.render('cadastroCarros', {
+            error: {
+                carro: 'Carro já cadastrado',
+            },
+            content: req.body,
+            title: 'Cadastro de Carros',
+        })
+        return
+    }
+
+    const buscaOpcionais = await models.Opcionais.findAll({
+        where: {
+            opcionais: {
+                [Op.like]: `${opcionais}`
+            }
+        }
+    })
+
+    res.render('listaOpcionais', {buscaOpcionais})    
+
+    const carro = {
+        ...req.body
+    }
+
+    await models.Marcas.create(carro)
+    res.redirect('/cadastros/carros');
+    return
+})
 
 module.exports.cadastroMarcas = (req, res) => {
     res.render('cadastroMarcas', {
