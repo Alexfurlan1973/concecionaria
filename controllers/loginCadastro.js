@@ -22,7 +22,6 @@ module.exports.paginaCadastro = (req, res) => {
 
 module.exports.criarAdmin = (async (req, res) => {
     const { nome, email, senha, confirmaSenha } = req.body
-    /*const foundUser = findUserByEmail(email, users)*/
     const foundUser = await models.Administradores.findOne({
         where: {
             email: req.body.email
@@ -82,7 +81,7 @@ module.exports.login = async function (req, res) {
             email: req.body.email
         }
     })
-  
+ 
     if (!foundUser) {
       res.render('login');
       return

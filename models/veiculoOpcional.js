@@ -7,11 +7,11 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.belongsTo(models.Veiculos, {
         foreignKey: 'idVeiculo',
-        targetKey: 'idVeiculoOpcionais'
+        targetKey: 'idVeiculo'
       }),
       this.belongsTo(models.Opcionais, {
         foreignKey: 'idOpcionais',
-        targetKey: 'idVeiculoOpcionais'
+        targetKey: 'idOpcionais'
       })
     }
   };

@@ -5,7 +5,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Marcas extends Model {    
     static associate(models) {
-      this.belongsTo(models.Veiculos, {
+      this.hasMany(models.Veiculos, {
         foreignKey: 'idVeiculo',
         id: 'idMarca'
       })
@@ -19,12 +19,6 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true
     },
     marca: DataTypes.STRING,
-    idVeiculo: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'Veiculos'
-      },
-    }
   }, {
     sequelize,
     modelName: 'Marcas',
