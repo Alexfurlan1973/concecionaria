@@ -11,6 +11,7 @@ const usersRouter = require('./routes/users');
 const loginCadastroRouter = require('./routes/loginCadastro');
 const contatoRouter = require('./routes/contato');
 const cadastrosRouter = require('./routes/cadastros');
+const buscaCarrosRouter = require('./routes/buscar');
 
 const app = express();
 
@@ -34,6 +35,7 @@ app.use('/loginCadastro', loginCadastroRouter);
 app.use('/contato', contatoRouter);
 app.use('/cadastros', cadastrosRouter);
 app.use('/admin', loginCadastroRouter);
+app.use('/resultado', buscaCarrosRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -34,14 +34,11 @@
                 <select name="nomeDaCor" id="">
                     <option value="corDB">Tem que vir do banco de dados</option>
                 </select>
+
                 <label for="opcionalCarro">Opcionais</label>
                 <!--<input type="text" name="motor" id="motor" placeholder="Mudar para lista de opcionais que vem do DB" required="required" />-->
-                <ul>
-                    <% for (const buscaOpcional of buscaOpcionais) { %>
-                        <li><%= buscaOpcional.opcionais<input class="checkbox" type="checkbox" name="opcional" value=""> %></li>
-                    <% } %>
-                </ul>
                 <input class="checkbox" type="checkbox" name="opcional" value="">
+                
                 <label for="descricaoCarro">Descrição</label>
                 <textarea name="descricao" id="descricao" cols="30" rows="10"></textarea>
                 <div>

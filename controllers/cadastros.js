@@ -1,4 +1,4 @@
-const models = require('../models');
+const models = require('../models')
 const { Op } = require('sequelize')
 
 module.exports.cadastros = (req, res) => {
@@ -48,7 +48,7 @@ module.exports.cadastrarCarros = (async (req, res) => {
         })
         return
     }
-
+/*
     const buscaOpcionais = await models.Opcionais.findAll({
         where: {
             opcionais: {
@@ -57,13 +57,13 @@ module.exports.cadastrarCarros = (async (req, res) => {
         }
     })
 
-    res.render('listaOpcionais', {buscaOpcionais})    
-
+    res.render('cadastroCarros', {buscaOpcionais})    
+*/
     const carro = {
         ...req.body
     }
 
-    await models.Marcas.create(carro)
+    await models.Veiculos.create(carro)
     res.redirect('/cadastros/carros');
     return
 })
