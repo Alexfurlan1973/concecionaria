@@ -4,6 +4,7 @@
     </title>
     <link rel="stylesheet" href="/css/cores.css">
 </head>
+
 <body>
     <div class="content">
         <div class="alinha">
@@ -14,7 +15,9 @@
             <form action="/cadastros/cores" method="POST">
                 <label for="cor">Nome da cor</label>
                 <input type="text" name="nomeDaCor" id="nomeDaCor" placeholder="Digite o nome da cor para cadastrar" />
-                <span class="error" ><%= error.nomeDaCor ? error.nomeDaCor : '' %></span>
+                <span class="error">
+                    <%= error.nomeDaCor ? error.nomeDaCor : '' %>
+                </span>
                 <div>
                     <button type="submit">Cadastrar</button>
                     <button type="reset"><a href="http://localhost:3000/cadastros">Cancelar</a></button>
