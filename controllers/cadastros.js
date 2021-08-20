@@ -9,23 +9,27 @@ module.exports.cadastros = (req, res) => {
     });
 }
 
-module.exports.cadastroCarros = (req, res) => {
+module.exports.cadastroCarros = (async (req, res) => {
+
+    const buscaOpcionais = await models.Opcionais.findAll()
+    const buscaMarcas = await models.Marcas.findAll()
+    const buscaCores = await models.Cores.findAll()
+
     res.render('cadastroCarros', {
         title: 'Cadastro de Carros',
         pagina: 'cadastroCarros',
         user: req.session.usuario,
         error: {},
         content: {},
+        buscaOpcionais,
+        buscaMarcas,
+        buscaCores,
     })
-}
+})
 
 module.exports.cadastrarCarros = (async (req, res) => {
     const { carroCadastro } = req.body
-    const foundCarro = await models.Veiculos.findOne({
-        where: {
-            carro: req.body.carro
-        }
-    })
+    const foundCarro = await models.Veiculos.findOne()
 
     if (!carroCadastro.carro || !carroCadastro.placa || !carroCadastro.cambio || !carroCadastro.ano || !carroCadastro.km || !carroCadastro.motor) {
         res.render('cadastroCarros', {
@@ -38,7 +42,7 @@ module.exports.cadastrarCarros = (async (req, res) => {
         return
     }
 
-    if (foundMarca) {
+    if (foundCarro) {
         res.render('cadastroCarros', {
             error: {
                 carro: 'Carro já cadastrado',
@@ -48,17 +52,13 @@ module.exports.cadastrarCarros = (async (req, res) => {
         })
         return
     }
-/*
-    const buscaOpcionais = await models.Opcionais.findAll({
-        where: {
-            opcionais: {
-                [Op.like]: `${opcionais}`
-            }
-        }
-    })
 
-    res.render('cadastroCarros', {buscaOpcionais})    
-*/
+    const buscaOpcionais = await models.Opcionais.findAll()
+    const buscaMarcas = await models.Marcas.findAll()
+    const buscaCores = await models.Cores.findAll()
+
+    res.render('cadastroCarros', {buscaOpcionais, buscaMarcas, buscaCores})    
+
     const carro = {
         ...req.body
     }

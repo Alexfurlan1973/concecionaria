@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class urlImagens extends Model {
     static associate(models) {
@@ -19,7 +20,13 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true
     },
     url: DataTypes.STRING,
-    principal: DataTypes.STRING
+    principal: DataTypes.STRING,
+    idVeiculo: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Veiculos'
+      }
+    },
   }, {
     sequelize,
     modelName: 'urlImagens',

@@ -13,34 +13,44 @@
             </div>
             <form action="/cadastros/carros" name="carros" method="POST">
                 <label for="nomeCarro">Nome do carro</label>
-                <input type="text" name="carro" id="carro" placeholder="Digite o nome do veículo para cadastrar" required="required" />
+                <input type="text" name="carro" id="carro" placeholder="Digite o nome do veículo para cadastrar" />
                 <label for="placaCarro">Placa do carro</label>
-                <input type="text" name="placa" id="placa" placeholder="Digite a placa do veículo" required="required" />
+                <input type="text" name="placa" id="placa" placeholder="Digite a placa do veículo" />
                 <label for="cambioCarro">Câmbio</label>
-                <input type="text" name="cambio" id="cambio" placeholder="Manual ou Automático" required="required" />
+                <input type="text" name="cambio" id="cambio" placeholder="Manual ou Automático" />
                 <label for="anoCarro">Ano do carro</label>
-                <input type="text" name="ano" id="ano" placeholder="Digite o ano do veículo" required="required" />
+                <input type="text" name="ano" id="ano" placeholder="Digite o ano do veículo" />
                 <label for="kmCarro">Quilometragem</label>
-                <input type="text" name="km" id="km" placeholder="Digite a quilometragem do veículo" required="required" />
+                <input type="text" name="km" id="km" placeholder="Digite a quilometragem do veículo" />
                 <label for="motorCarro">Motor</label>
-                <input type="text" name="motor" id="motor" placeholder="Qual a potencia do motor" required="required" />
+                <input type="text" name="motor" id="motor" placeholder="Qual a potencia do motor" />
                 <label for="marcaCarro">Marca</label>
-                <!--<input type="text" name="motor" id="motor" placeholder="Mudar para lista de marcas que vem do DB" required="required" />-->
-                <select name="nomeDaMarca" id="">
-                    <option value="marcaDB">Tem que vir do banco de dados</option>
+                <select name="nomeDaMarca" id=""><% for (const buscaMarca of buscaMarcas) { %>
+                        <option value="marcaDB">
+                            <%= buscaMarca.marca %>
+                        </option>
+                    <% } %>
                 </select>
                 <label for="corCarro">Cor</label>
-                <!--<input type="text" name="motor" id="motor" placeholder="Mudar para lista de cores que vem do DB" required="required" />-->
                 <select name="nomeDaCor" id="">
-                    <option value="corDB">Tem que vir do banco de dados</option>
+                    <% for (const buscaCor of buscaCores) { %>
+                        <option value="corDB">
+                            <%= buscaCor.cor %>
+                        </option>
+                    <% } %>
                 </select>
 
                 <label for="opcionalCarro">Opcionais</label>
-                <!--<input type="text" name="motor" id="motor" placeholder="Mudar para lista de opcionais que vem do DB" required="required" />-->
-                <input class="checkbox" type="checkbox" name="opcional" value="">
-                
+                    <% for (const buscaOpcional of buscaOpcionais) { %>
+                        <div>                        
+                        <label><input class="checkbox" type="checkbox" name="opcional" value="<%= buscaOpcional.idOpcinais %>"> <%= buscaOpcional.opcionais %></label>
+                    </div>
+                    <% } %>
                 <label for="descricaoCarro">Descrição</label>
-                <textarea name="descricao" id="descricao" cols="30" rows="10"></textarea>
+                <textarea name="descricao" id="descricao" cols="30" rows="10" placeholder="Uma breve descrição do carro"></textarea>
+                <span class="error"><%= error.descricao ? error.descricao : '' %></span>
+                <label for="valorCarro">Valor</label>
+                <input type="text" name="valor" id="valor" placeholder="Qual o preço deste carro" />
                 <div>
                     <button type="submit">Cadastrar</button>
                     <button type="reset"><a href="http://localhost:3000/cadastros">Cancelar</a></button>

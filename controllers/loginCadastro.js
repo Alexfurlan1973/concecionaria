@@ -29,12 +29,21 @@ module.exports.criarAdmin = (async (req, res) => {
     })
 
 
-    if (!nome || !email || !senha) {
-        res.send('Faltou preencher algum campo.')
+    if (!nome || !email || !senha || !confirmaSenha) {
+        res.render('cadastro', {
+            user: null,
+            error: {
+                confirmaSenha: 'Faltou preencher algum campo.',
+            },
+            
+            content: req.body,
+        })
+        return
     }
 
     if (foundUser) {
         res.render('cadastro', {
+            user: null,
             error: {
                 email: 'Email já cadastrado',
             },
@@ -45,6 +54,7 @@ module.exports.criarAdmin = (async (req, res) => {
 
     if (senha != confirmaSenha) {
         res.render('cadastro', {
+            user: null,
             error: {
                 senha: 'Senhas diferentes',
             },
@@ -70,6 +80,7 @@ module.exports.paginaLogin = (req, res) => {
         title: 'Loja de Carros - Login',
         pagina: 'login',
         user: null, /*req.session.usuario,*/
+        error: {}
     });
 }
 
@@ -83,12 +94,28 @@ module.exports.login = async function (req, res) {
     })
  
     if (!foundUser) {
-      res.render('login');
+      res.render('login', {
+        title: 'Loja de Carros - Login',
+        pagina: 'login',
+        user: null,
+        error: {
+            email: 'Usuário não cadastrado'
+        },
+        content: req.body,
+      });
       return
     }
   
     if (!compareHash(senha, foundUser.senha)) {
-      res.render('login');
+      res.render('login', {
+          title: 'Loja de Carros - Login',
+          pagina: 'login',
+          user: null,
+          error: {
+            senha: 'Senha digitada esta errada.'
+        },
+        content: req.body,
+        });
       return
     }
   
