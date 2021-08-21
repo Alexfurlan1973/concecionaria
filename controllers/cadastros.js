@@ -51,10 +51,10 @@ module.exports.cadastrarImg = ((req, res) => {
 })
 
 module.exports.cadastrarCarros = (async (req, res) => {
-    const { carro, cambio, ano, km, motor } = req.body
+    const veiculo = req.body
     const foundCarro = await models.Veiculos.findOne()
 
-    if (!carro || !cambio || !ano || !km || !motor) {
+    if (!veiculo.carro || !veiculo.cambio || !veiculo.ano || !veiculo.km || !veiculo.motor) {
         res.render('cadastroCarros', {
             error: {
                 descricao: 'Faltou preencher algum campo.',
@@ -92,17 +92,19 @@ module.exports.cadastrarCarros = (async (req, res) => {
         error: {}
     })
 
-    const opcional = await models.Opcionais.findOne({ where: { }})
+    const cor = await models.Cores.findOne({ where: { cor: veiculo.nomeDaCor }})
+
+    veiculo.idCor = cor.idCor
 
     const carros = {
         ...req.body
     }
 
     carros.idOpcionais = buscaOpcionais.id
-    carros.idCor = buscaCores.id
+    carros.idCor = buscaCores.idCor
     carros.idMarca = buscaMarcas.id
 
-    await models.Veiculos.create(carros)
+    await models.Veiculos.create(veiculo)
     res.redirect('/cadastros/carros');
     return
 })
