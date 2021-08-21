@@ -12,5 +12,6 @@ router.get('/cores', cadastros.cadastroCores);
 router.post('/cores', cadastros.cadastrarCores);
 router.get('/opcionais', cadastros.cadastroOpcionais);
 router.post('/opcionais', cadastros.cadastrarOpcionais);
+/*router.post('/upload', cadastros.cadastrarImagens);*/
 
 module.exports = router;
