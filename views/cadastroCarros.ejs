@@ -11,11 +11,9 @@
                 <h1>Cadastro de Carros</h1>
                 <hr>
             </div>
-            <form action="/cadastros/carros" name="carros" method="POST">
+            <form action="/cadastros/carros" name="carros" method="POST" enctype="multipart/form-data">
                 <label class="label" for="nomeCarro">Nome do carro</label>
                 <input type="text" name="carro" id="carro" placeholder="Digite o nome do veículo para cadastrar" />
-                <label class="label" for="placaCarro">Placa do carro</label>
-                <input type="text" name="placa" id="placa" placeholder="Digite a placa do veículo" />
                 <label class="label" for="cambioCarro">Câmbio</label>
                 <input type="text" name="cambio" id="cambio" placeholder="Manual ou Automático" />
                 <label class="label" for="anoCarro">Ano do carro</label>
@@ -42,7 +40,7 @@
 
                 <label class="label" for="opcionalCarro">Opcionais</label>
                     <% for (const buscaOpcional of buscaOpcionais) { %>
-                        <div>                        
+                        <div>
                         <label class="textCheckbox" ><input class="checkbox" type="checkbox" name="opcional" value="<%= buscaOpcional.idOpcinais %>"> <%= buscaOpcional.opcionais %></label>
                     </div>
                     <% } %>
@@ -51,6 +49,7 @@
                 <span class="error"><%= error.descricao ? error.descricao : '' %></span>
                 <label class="label" for="valorCarro">Valor</label>
                 <input type="text" name="valor" id="valor" placeholder="Qual o preço deste carro" />
+                <input class="upload" type="file" name="imagem" />
                 <div>
                     <button type="submit">Cadastrar</button>
                     <button type="reset"><a href="http://localhost:3000/cadastros">Cancelar</a></button>

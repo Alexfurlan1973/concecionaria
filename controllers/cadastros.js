@@ -1,6 +1,25 @@
 const models = require('../models')
 const { Op } = require('sequelize')
 
+const multer = require('multer')
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        const tiposPermitidos = ['image/jpeg', 'image/png']
+
+        if (tiposPermitidos.includes(file.mimetype)) {
+            cb(null, path.join(__dirname, 'uploads'))
+        } else {
+            cb('Só aceita imagem')
+        }
+    },
+    filename: (req, file, cb) => {
+        cb(null, `${uuid}_${file.originalname}`)
+    }
+})
+const upload = multer({
+    storage: 'storage'
+})
+
 module.exports.cadastros = (req, res) => {
     res.render('cadastros', {
         title: 'Pagina de Cadastros',
@@ -27,17 +46,22 @@ module.exports.cadastroCarros = (async (req, res) => {
     })
 })
 
+module.exports.cadastrarImg = ((req, res) => {
+    res.send(204)
+})
+
 module.exports.cadastrarCarros = (async (req, res) => {
-    const { carroCadastro } = req.body
+    const { carro, cambio, ano, km, motor } = req.body
     const foundCarro = await models.Veiculos.findOne()
 
-    if (!carroCadastro.carro || !carroCadastro.placa || !carroCadastro.cambio || !carroCadastro.ano || !carroCadastro.km || !carroCadastro.motor) {
+    if (!carro || !cambio || !ano || !km || !motor) {
         res.render('cadastroCarros', {
             error: {
                 descricao: 'Faltou preencher algum campo.',
             },
             content: req.body,
             title: 'Cadastro de Carros',
+            buscaMarcas,
         })
         return
     }
@@ -49,6 +73,7 @@ module.exports.cadastrarCarros = (async (req, res) => {
             },
             content: req.body,
             title: 'Cadastro de Carros',
+            buscaMarcas,
         })
         return
     }
@@ -57,13 +82,27 @@ module.exports.cadastrarCarros = (async (req, res) => {
     const buscaMarcas = await models.Marcas.findAll()
     const buscaCores = await models.Cores.findAll()
 
-    res.render('cadastroCarros', {buscaOpcionais, buscaMarcas, buscaCores})    
 
-    const carro = {
+
+    res.render('cadastroCarros', {
+        buscaOpcionais,
+        buscaMarcas,
+        buscaCores,
+        title: 'Cadastro de Carros',
+        error: {}
+    })
+
+    const opcional = await models.Opcionais.findOne({ where: { }})
+
+    const carros = {
         ...req.body
     }
 
-    await models.Veiculos.create(carro)
+    carros.idOpcionais = buscaOpcionais.id
+    carros.idCor = buscaCores.id
+    carros.idMarca = buscaMarcas.id
+
+    await models.Veiculos.create(carros)
     res.redirect('/cadastros/carros');
     return
 })

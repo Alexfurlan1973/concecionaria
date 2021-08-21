@@ -98,6 +98,9 @@ form button a {
     color: white;
 }
 
+.upload {
+    margin-top: 10px;
+}
 
 /* Ajustando Responsividade */
 @media (max-width: 640px) {

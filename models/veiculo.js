@@ -6,15 +6,15 @@ module.exports = (sequelize, DataTypes) => {
   class Veiculos extends Model {
     static associate(models) {
       this.belongsTo(models.Cores, {
-        foreignKey: 'idCor',
+        foreignKey: 'idVeiculo',
         targetKey: 'idCor'
       }),
       this.belongsTo(models.Marcas, {
-        foreignKey: 'idMarca',
+        foreignKey: 'idVeiculo',
         targetKey: 'idMarca'
       }),
       this.belongsTo(models.Opcionais, {
-        foreignKey: 'idOpcionais',
+        foreignKey: 'idVeiculo',
         targetKey: 'idOpcionais'
       }),
       this.belongsTo(models.Administradores, {
@@ -39,19 +39,30 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true
     },
     carro: DataTypes.STRING,
-    placa: DataTypes.STRING,
     cambio: DataTypes.STRING,
     ano: DataTypes.STRING,
     km: DataTypes.STRING,
     motor: DataTypes.STRING,
     descricao: DataTypes.STRING,
     valor: DataTypes.STRING,
-    idUrlImagens: {
+    idCor: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'urlImagens'
+        model: 'Cores'
       },
-    }
+    },
+    idMarca: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Marcas'
+      },
+    },
+    idAdmin: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Administradores'
+      },
+    },
   }, {
     sequelize,
     modelName: 'Veiculos',
