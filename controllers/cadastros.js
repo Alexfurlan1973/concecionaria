@@ -82,8 +82,6 @@ module.exports.cadastrarCarros = (async (req, res) => {
     const buscaMarcas = await models.Marcas.findAll()
     const buscaCores = await models.Cores.findAll()
 
-
-
     res.render('cadastroCarros', {
         buscaOpcionais,
         buscaMarcas,
