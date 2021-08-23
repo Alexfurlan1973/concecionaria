@@ -49,13 +49,24 @@ module.exports.cadastroCarros = (async (req, res) => {
     })
 })
 
-module.exports.cadastrarImg = ((req, res) => {
-    res.send(204)
+module.exports.cadastrarImg = (async (req, res) => {
+    const urlImg = await models.urlImagens.findAll()
+    const caminho = req.file.path
+    console.log(caminho)
+    urlImg.url = caminho
+
+    await models.urlImagens.create(urlImg)
+    res.redirect('/cadastros/carros');
+    return
 })
 
 module.exports.cadastrarCarros = (async (req, res) => {
     const veiculo = req.body
     const foundCarro = await models.Veiculos.findOne()
+    const buscaMarcas = await models.Marcas.findAll()
+    const buscaCores = await models.Cores.findAll()
+    const buscaOpcionais = await models.Opcionais.findAll()
+    console.log(req.body)
 
     if (!veiculo.carro || !veiculo.cambio || !veiculo.ano || !veiculo.km || !veiculo.motor) {
         res.render('cadastroCarros', {
@@ -65,6 +76,8 @@ module.exports.cadastrarCarros = (async (req, res) => {
             content: req.body,
             title: 'Cadastro de Carros',
             buscaMarcas,
+            buscaCores,
+            buscaOpcionais,
         })
         return
     }
@@ -77,13 +90,11 @@ module.exports.cadastrarCarros = (async (req, res) => {
             content: req.body,
             title: 'Cadastro de Carros',
             buscaMarcas,
+            buscaCores,
+            buscaOpcionais,
         })
         return
     }
-
-    const buscaOpcionais = await models.Opcionais.findAll()
-    const buscaMarcas = await models.Marcas.findAll()
-    const buscaCores = await models.Cores.findAll()
 
     res.render('cadastroCarros', {
         buscaOpcionais,
@@ -93,19 +104,11 @@ module.exports.cadastrarCarros = (async (req, res) => {
         error: {}
     })
 
-    const cor = await models.Cores.findOne({ where: { cor: veiculo.nomeDaCor }})
-
-    veiculo.idCor = cor.idCor
-
-    veiculo = {
+    const carros = {
         ...req.body
     }
 
-    carros.idOpcionais = buscaOpcionais.idOpcionais
-    carros.idCor = buscaCores.idCor
-    carros.idMarca = buscaMarcas.idMarca
-
-    await models.Veiculos.create(veiculo)
+    await models.Veiculos.create(carros)
     res.redirect('/cadastros/carros');
     return
 })

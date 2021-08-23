@@ -23,16 +23,16 @@
                 <label class="label" for="motorCarro">Motor</label>
                 <input type="text" name="motor" id="motor" placeholder="Qual a potencia do motor" />
                 <label class="label" for="marcaCarro">Marca</label>
-                <select name="nomeDaMarca" id=""><% for (const buscaMarca of buscaMarcas) { %>
-                        <option value="marcaDB">
+                <select name="idMarca" id=""><% for (const buscaMarca of buscaMarcas) { %>
+                        <option value="<%= buscaMarca.idMarca %>">
                             <%= buscaMarca.marca %>
                         </option>
                     <% } %>
                 </select>
                 <label class="label" for="corCarro">Cor</label>
-                <select name="nomeDaCor" id="">
+                <select name="idCor" id="">
                     <% for (const buscaCor of buscaCores) { %>
-                        <option value="">
+                        <option value="<%= buscaCor.idCor %>">
                             <%= buscaCor.cor %>
                         </option>
                     <% } %>
@@ -49,7 +49,7 @@
                 <span class="error"><%= error.descricao ? error.descricao : '' %></span>
                 <label class="label" for="valorCarro">Valor</label>
                 <input type="text" name="valor" id="valor" placeholder="Qual o preço deste carro" />
-                <input class="upload" type="file" name="imagem" />
+                <input class="upload" type="file" name="imagem" multiple/>
                 <div>
                     <button type="submit">Cadastrar</button>
                     <button type="reset"><a href="http://localhost:3000/cadastros">Cancelar</a></button>

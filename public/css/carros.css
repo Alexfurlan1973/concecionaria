@@ -102,6 +102,10 @@ form button a {
     margin-top: 10px;
 }
 
+.error {
+    color: red;
+}
+
 /* Ajustando Responsividade */
 @media (max-width: 640px) {
     .search-input {
