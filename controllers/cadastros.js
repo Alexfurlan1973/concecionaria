@@ -1,9 +1,12 @@
 const models = require('../models')
 const { Op } = require('sequelize')
+const uuid = require('uuid').v4
 
 const multer = require('multer')
-const storage = multer.diskStorage({
+
+/*const storage = multer.diskStorage({
     destination: (req, file, cb) => {
+        console.log(file)
         const tiposPermitidos = ['image/jpeg', 'image/png']
 
         if (tiposPermitidos.includes(file.mimetype)) {
@@ -13,12 +16,12 @@ const storage = multer.diskStorage({
         }
     },
     filename: (req, file, cb) => {
-        cb(null, `${uuid}_${file.originalname}`)
+        cb(null, `${uuid()}_${file.originalname}`)
     }
 })
 const upload = multer({
     storage: 'storage'
-})
+})*/
 
 module.exports.cadastros = (req, res) => {
     res.render('cadastros', {
@@ -96,13 +99,13 @@ module.exports.cadastrarCarros = (async (req, res) => {
 
     veiculo.idCor = cor.idCor
 
-    const carros = {
+    veiculo = {
         ...req.body
     }
 
-    carros.idOpcionais = buscaOpcionais.id
+    carros.idOpcionais = buscaOpcionais.idOpcionais
     carros.idCor = buscaCores.idCor
-    carros.idMarca = buscaMarcas.id
+    carros.idMarca = buscaMarcas.idMarca
 
     await models.Veiculos.create(veiculo)
     res.redirect('/cadastros/carros');
