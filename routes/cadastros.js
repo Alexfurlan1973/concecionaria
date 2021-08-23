@@ -7,16 +7,17 @@ const multer = require('multer')
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        console.log(file)
+        
         const tiposPermitidos = ['image/jpeg', 'image/png']
 
         if (tiposPermitidos.includes(file.mimetype)) {
-            cb(null, /*path.join(__dirname,*/ 'uploads')
+            cb(null, 'uploads')
         } else {
             cb('Só aceita imagem')
         }
     },
     filename: (req, file, cb) => {
+        console.log(file)
         cb(null, `${uuid()}_${file.originalname}`)
     }
 })
