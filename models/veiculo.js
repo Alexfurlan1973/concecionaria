@@ -13,10 +13,6 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'idVeiculo',
         targetKey: 'idMarca'
       }),
-      this.belongsTo(models.Opcionais, {
-        foreignKey: 'idVeiculo',
-        targetKey: 'idOpcionais'
-      }),
       this.belongsTo(models.Administradores, {
         foreignKey: 'idAdmin',
         targetKey: 'idAdmin'
@@ -24,10 +20,6 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.urlImagens, {
         foreignKey: 'idUrlImagens',
         targetKey: 'idVeiculo'
-      }),
-      this.hasMany(models.veiculoOpcionais, {
-        foreignKey: 'idVeiculo',
-        id: 'idVeiculo'
       })
     }
   };
@@ -43,6 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     ano: DataTypes.STRING,
     km: DataTypes.STRING,
     motor: DataTypes.STRING,
+    opcionais: DataTypes.STRING,
     descricao: DataTypes.STRING,
     valor: DataTypes.STRING,
     idCor: {

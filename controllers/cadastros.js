@@ -4,25 +4,6 @@ const uuid = require('uuid').v4
 
 const multer = require('multer')
 
-/*const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        console.log(file)
-        const tiposPermitidos = ['image/jpeg', 'image/png']
-
-        if (tiposPermitidos.includes(file.mimetype)) {
-            cb(null, path.join(__dirname, 'uploads'))
-        } else {
-            cb('Só aceita imagem')
-        }
-    },
-    filename: (req, file, cb) => {
-        cb(null, `${uuid()}_${file.originalname}`)
-    }
-})
-const upload = multer({
-    storage: 'storage'
-})*/
-
 module.exports.cadastros = (req, res) => {
     res.render('cadastros', {
         title: 'Pagina de Cadastros',
@@ -33,7 +14,6 @@ module.exports.cadastros = (req, res) => {
 
 module.exports.cadastroCarros = (async (req, res) => {
 
-    const buscaOpcionais = await models.Opcionais.findAll()
     const buscaMarcas = await models.Marcas.findAll()
     const buscaCores = await models.Cores.findAll()
 
@@ -43,7 +23,6 @@ module.exports.cadastroCarros = (async (req, res) => {
         user: req.session.usuario,
         error: {},
         content: {},
-        buscaOpcionais,
         buscaMarcas,
         buscaCores,
     })
@@ -62,12 +41,12 @@ module.exports.cadastrarImg = (async (req, res) => {
 
 module.exports.cadastrarCarros = (async (req, res) => {
     const veiculo = req.body
-    const foundCarro = await models.Veiculos.findOne()
+    const foundCarro = await models.Veiculos.findOne().then(function(Veiculos) {
+        console.log(Veiculos)
+    })
     const buscaMarcas = await models.Marcas.findAll()
     const buscaCores = await models.Cores.findAll()
-    const buscaOpcionais = await models.Opcionais.findAll()
-    console.log(req.body)
-
+/*console.log(foundCarro)*/
     if (!veiculo.carro || !veiculo.cambio || !veiculo.ano || !veiculo.km || !veiculo.motor) {
         res.render('cadastroCarros', {
             error: {
@@ -77,7 +56,6 @@ module.exports.cadastrarCarros = (async (req, res) => {
             title: 'Cadastro de Carros',
             buscaMarcas,
             buscaCores,
-            buscaOpcionais,
         })
         return
     }
@@ -91,25 +69,19 @@ module.exports.cadastrarCarros = (async (req, res) => {
             title: 'Cadastro de Carros',
             buscaMarcas,
             buscaCores,
-            buscaOpcionais,
         })
         return
     }
 
-    res.render('cadastroCarros', {
-        buscaOpcionais,
-        buscaMarcas,
-        buscaCores,
-        title: 'Cadastro de Carros',
-        error: {}
-    })
+    console.log(req.body)
 
     const carros = {
-        ...req.body
+        idAdmin: req.session.usuario.idAdmin,
+        ...req.body,
     }
 
     await models.Veiculos.create(carros)
-    res.redirect('/cadastros/carros');
+    res.redirect('/cadastros/');
     return
 })
 
@@ -208,54 +180,5 @@ module.exports.cadastrarCores = (async (req, res) => {
 
     await models.Cores.create(cor)
     res.redirect('/cadastros/cores');
-    return
-})
-
-module.exports.cadastroOpcionais = (req, res) => {
-    res.render('cadastroOpcionais', {
-        title: 'Cadastro de Opcionais',
-        pagina: 'cadastroOpcionais',
-        user: req.session.usuario,
-        error: {},
-        content: {},
-    })
-}
-
-module.exports.cadastrarOpcionais = (async (req, res) => {
-    const opcionais = req.body.nomeDoOpcional
-    const foundOpc = await models.Opcionais.findOne({
-        where: {
-            opcionais: req.body.nomeDoOpcional
-        }
-    })
-
-    if (!opcionais) {
-        res.render('cadastroOpcionais', {
-            error: {
-                nomeDoOpcional: 'Faltou preencher o campo Opcinal.',
-            },
-            content: req.body,
-            title: 'Cadastro de Opcionais',
-        })
-        return
-    }
-
-    if (foundOpc) {
-        res.render('cadastroOpcionais', {
-            error: {
-                nomeDoOpcional: 'Opcional já cadastrado',
-            },
-            content: req.body,
-            title: 'Cadastro de Opcionais',
-        })
-        return
-    }
-
-    const opc = {
-        opcionais: req.body.nomeDoOpcional
-    }
-
-    await models.Opcionais.create(opc)
-    res.redirect('/cadastros/opcionais');
     return
 })

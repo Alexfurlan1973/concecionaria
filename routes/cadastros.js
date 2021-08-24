@@ -1,19 +1,17 @@
 const express = require('express')
 const router = express.Router()
+const checkSession = require('../middlewares/checkSession')
 const multer = require('multer')
 const multerConfig = require('../config/multer')
 
 const cadastros = require('../controllers/cadastros')
 
-router.get('/', cadastros.cadastros)
-router.get('/carros', cadastros.cadastroCarros)
-router.post('/carros', multer(multerConfig).array('imagem'), cadastros.cadastrarCarros)
-router.get('/marcas', cadastros.cadastroMarcas)
-router.post('/marcas', cadastros.cadastrarMarcas)
-router.get('/cores', cadastros.cadastroCores)
-router.post('/cores', cadastros.cadastrarCores)
-router.get('/opcionais', cadastros.cadastroOpcionais)
-router.post('/opcionais', cadastros.cadastrarOpcionais)
-/*router.post('/upload', cadastros.cadastrarImagens);*/
+router.get('/', checkSession, cadastros.cadastros)
+router.get('/carros', checkSession, cadastros.cadastroCarros)
+router.post('/carros', checkSession, multer(multerConfig).array('imagem'), cadastros.cadastrarCarros)
+router.get('/marcas', checkSession, cadastros.cadastroMarcas)
+router.post('/marcas', checkSession, cadastros.cadastrarMarcas)
+router.get('/cores', checkSession, cadastros.cadastroCores)
+router.post('/cores', checkSession, cadastros.cadastrarCores)
 
 module.exports = router;

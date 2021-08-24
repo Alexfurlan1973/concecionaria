@@ -17,7 +17,4 @@ module.exports = {
             cb(null, `${uuid()}-${file.originalname}`)
         }
     })
-/*const upload = multer({
-        storage
-    })*/
 }
