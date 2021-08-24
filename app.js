@@ -31,7 +31,6 @@ app.use(session({
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/loginCadastro', loginCadastroRouter);
 app.use('/contato', contatoRouter);
 app.use('/cadastros', cadastrosRouter);
 app.use('/admin', loginCadastroRouter);

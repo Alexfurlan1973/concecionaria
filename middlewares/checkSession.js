@@ -5,3 +5,8 @@ module.exports = function (req, res, next) {
     next();
   };
   
+/*
+  req.session.destroy((err) => {
+    //faz o redirect
+    })
+    */

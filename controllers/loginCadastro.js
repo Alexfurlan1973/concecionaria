@@ -35,7 +35,7 @@ module.exports.criarAdmin = (async (req, res) => {
             error: {
                 confirmaSenha: 'Faltou preencher algum campo.',
             },
-            
+
             content: req.body,
         })
         return
@@ -86,40 +86,54 @@ module.exports.paginaLogin = (req, res) => {
 
 module.exports.login = async function (req, res) {
     const { email, senha } = req.body;
-  
+
     const foundUser = await models.Administradores.findOne({
         where: {
             email: req.body.email
         }
     })
- 
+
     if (!foundUser) {
-      res.render('login', {
-        title: 'Loja de Carros - Login',
-        pagina: 'login',
-        user: null,
-        error: {
-            email: 'Usuário não cadastrado'
-        },
-        content: req.body,
-      });
-      return
-    }
-  
-    if (!compareHash(senha, foundUser.senha)) {
-      res.render('login', {
-          title: 'Loja de Carros - Login',
-          pagina: 'login',
-          user: null,
-          error: {
-            senha: 'Senha digitada esta errada.'
-        },
-        content: req.body,
+        res.render('login', {
+            title: 'Loja de Carros - Login',
+            pagina: 'login',
+            user: null,
+            error: {
+                email: 'Usuário não cadastrado'
+            },
+            content: req.body,
         });
-      return
+        return
     }
-  
+
+    if (!compareHash(senha, foundUser.senha)) {
+        res.render('login', {
+            title: 'Loja de Carros - Login',
+            pagina: 'login',
+            user: null,
+            error: {
+                senha: 'Senha digitada esta errada.'
+            },
+            content: req.body,
+        });
+        return
+    }
+
     req.session.usuario = foundUser;
-  
+
     res.redirect('/cadastros');
-  };
+};
+
+module.exports.paginaLogoff = (req, res) => {
+    res.render('logoff', {
+        title: 'Loja de Carros - Logoff',
+        user: null
+    })
+}
+
+module.exports.logoff = (async (req, res) => {
+    req.session.destroy((err) => {
+        req.session.usuario = null
+        res.redirect('/admin/logoff')
+    })
+})

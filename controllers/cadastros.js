@@ -31,10 +31,10 @@ module.exports.cadastroCarros = (async (req, res) => {
 module.exports.cadastrarImg = (async (req, res) => {
     const urlImg = await models.urlImagens.findAll()
     const caminho = req.file.path
-    console.log(caminho)
-    urlImg.url = caminho
 
-    await models.urlImagens.create(urlImg)
+
+
+    await models.urlImagens.create(caminho)
     res.redirect('/cadastros/carros');
     return
 })
