@@ -1,4 +1,22 @@
 <body>
-    <%= id %>
-    <h2>Funcionou</h2>
+    <% for (const resultado of resultados) { %>
+        <% if (resultado.idVeiculo == id) { %>
+            <P>Veículo: <%= resultado.carro %></P>
+            <P>Câmbio: <%= resultado.cambio %></P>
+            <P>Ano: <%= resultado.ano %></P>
+            <P>Quilometragem: <%= resultado.km %></P>
+            <P>Motor: <%= resultado.motor %></P>
+            <P>Marca: <%= resultado.idMarca %></P>
+            <P>Cor: <%= resultado.idCor %></P>
+            <P>Opcionais: <%= resultado.opcionais %></P>
+            <p>Descrição: <%= resultado.descricao %></p>
+            <p>Valor: R$ <%= resultado.valor %>,00</p>
+        <% } %>
+    <% } %>
+        
+        
+   
+
+
+    
 </body>

@@ -1,8 +1,5 @@
 const models = require('../models')
 const { Op } = require('sequelize')
-const uuid = require('uuid').v4
-
-const multer = require('multer')
 
 module.exports.cadastros = (req, res) => {
     res.render('cadastros', {
@@ -42,7 +39,6 @@ module.exports.cadastrarImg = (async (req, res) => {
 module.exports.cadastrarCarros = (async (req, res) => {
     const veiculo = req.body
     const foundCarro = await models.Veiculos.findOne().then(function(Veiculos) {
-        console.log(Veiculos)
     })
     const buscaMarcas = await models.Marcas.findAll()
     const buscaCores = await models.Cores.findAll()
@@ -72,8 +68,6 @@ module.exports.cadastrarCarros = (async (req, res) => {
         })
         return
     }
-
-    console.log(req.body)
 
     const carros = {
         idAdmin: req.session.usuario.idAdmin,

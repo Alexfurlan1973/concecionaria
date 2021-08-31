@@ -1,5 +1,13 @@
-<ul>
+
     <% for (const resultado of resultados) { %>
-        <li><%= resultado.carro %></li>
+        <p>Veículo: <%= resultado.carro %></p>
+        <p>Câmbio: <%= resultado.cambio %></p>
+        <p>Ano: <%= resultado.ano %></p>
+        <p>Quilometragem: <%= resultado.km %></p>
+        <p>Motor: <%= resultado.motor %></p>
+        <p>Marca: <%= resultado.idMarca %></p>
+        <p>Cor: <%= resultado.idCor %></p>
+        <p>Opcionais: <%= resultado.opcionais %></p>
+        <p>Descrição: <%= resultado.descricao %></p>
+        <p>Valor: R$ <%= resultado.valor %>,00</p>
     <% } %>
-</ul>

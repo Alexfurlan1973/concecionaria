@@ -62,13 +62,13 @@
       </div>
       <div class="filter-card">
         <form action="/resultado" method="GET">
-          <input name:"carro" type="search" class="search-input" placeholder="Procure o seu modelo favorito" />
+          <input name="carro" type="search" class="search-input" placeholder="Procure o seu modelo favorito" />
           <button id="buscar" class="search-button" type="submit">Search</button>
         </form>
       </div>
       <div class="card-wrapper">
-        <% for (let i = 0; i <= 8; i++) { %>
-          <%- include('partials/cards.ejs', { carro: carros[i] } ) %>
+        <% for (let i = 0; i <= 9; i++) { %>
+          <%- include('partials/cards.ejs', { carros: carros[i] } ) %>
         <% } %>
       </div>
       <div class="tfb-query topo" data-tipo="carros" data-style="1"></div>
@@ -86,11 +86,7 @@
         </div>
         <div class="right">
           <h3>Junte-se a tecnologia e mobilidade</h3>
-          <p>As experiências acumuladas demonstram que a complexidade computacional nos obriga à migração dos requisitos mínimos de hardware exigidos. No entanto, não podemos esquecer que a implementação do código acarreta um processo de reformulação e modernização da rede privada. Todavia, a consolidação das infraestruturas inviabiliza a implantação dos paradigmas de desenvolvimento de software.
-
-            Nunca é demais lembrar o impacto destas possíveis vulnerabilidades, uma vez que o novo modelo computacional aqui preconizado facilita a criação da utilização dos serviços nas nuvens. No mundo atual, a determinação clara de objetivos possibilita uma melhor disponibilidade da confidencialidade imposta pelo sistema de senhas. Por outro lado, o desenvolvimento de novas tecnologias de virtualização causa impacto indireto no tempo médio de acesso do tempo de down-time que deve ser mínimo. No nível organizacional, a necessidade de cumprimento dos SLAs previamente acordados conduz a um melhor balancemanto de carga do impacto de uma parada total.
-  
-            Neste sentido, a preocupação com a TI verde otimiza o uso dos processadores das ACLs de segurança impostas pelo firewall. Desta maneira, a criticidade dos dados em questão é um ativo de TI das formas de ação.
+          <p>As experiências acumuladas demonstram que a complexidade computacional nos obriga à migração dos requisitos mínimos de hardware exigidos. No entanto, não podemos esquecer que a implementação do código acarreta um processo de reformulação e modernização da rede privada. Todavia, a consolidação das infraestruturas inviabiliza a implantação dos paradigmas de desenvolvimento de software. Nunca é demais lembrar o impacto destas possíveis vulnerabilidades, uma vez que o novo modelo computacional aqui preconizado facilita a criação da utilização dos serviços nas nuvens.
           </p>
         </div>
       </div>
