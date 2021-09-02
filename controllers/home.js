@@ -16,8 +16,6 @@ module.exports.exibeVeiculo = (async (req, res) => {
     const id = req.params.id
     const resultados = await models.Veiculos.findAll()
 
-    
-    
     res.render('detalhes', { 
     resultados,
     id,
